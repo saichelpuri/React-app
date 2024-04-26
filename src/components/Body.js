@@ -4,7 +4,16 @@ import resList from "./utils/mockdata";
 const Body = () => {
   return (
     <div className="body">
-      <div className="search">Search</div>
+      <div className="filter">
+        <button
+          className="filter-btn"
+          onClick={() => {
+            console.log("button clicked");
+          }}
+        >
+          Top Rated restaurant
+        </button>
+      </div>
       <div className="res-container">
         {/* <RestuarentCard resData={resList[0]} /> */}
         {resList.map((eachRestaurant, index) => (

@@ -1,6 +1,7 @@
 .logo {
   width: 150px;
   height: 100px;
+  /* mix-blend-mode: multiply; */
 }
 .header {
   display: flex;
@@ -67,4 +68,22 @@ ul {
   font-weight: 800;
   font-style: italic;
   color: #ed1a36;
+}
+.filter {
+  display: flex;
+  justify-content: center;
+}
+.filter-btn {
+  margin-top: 20px;
+  cursor: pointer;
+  background: #ed1a36;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  transition: all 0.3s;
+}
+
+.filter-btn:hover {
+  scale: 1.1;
 }
