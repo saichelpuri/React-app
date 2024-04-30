@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import resList from "./components/utils/mockdata";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // below code used to create react element using cdn links not a appropriate way
 // const parent = React.createElement("div", { id: "parent" }, [
@@ -72,9 +73,10 @@ import resList from "./components/utils/mockdata";
 //   );
 // };
 // inline css for react style={styleCard} this is how it is used // write everything in object put that inside {}
-const styleCard = {
-  backgroundColor: "red",
-};
+
+// const styleCard = {
+//   backgroundColor: "red",
+// };
 
 // const resObj = {
 //   name: "mehfil",
@@ -87,16 +89,16 @@ const styleCard = {
 // }
 
 // sorting resList based on time and rating
-resList.sort(
-  (x, y) => {
-    if (x.info.sla.deliveryTime == y.info.sla.deliveryTime) {
-      return y.info.avgRating - x.info.avgRating;
-    } else {
-      return x.info.sla.deliveryTime - y.info.sla.deliveryTime;
-    }
-  }
-  // x.info.avgRating - y.info.avgRating
-);
+// resList.sort(
+//   (x, y) => {
+//     if (x.info.sla.deliveryTime == y.info.sla.deliveryTime) {
+//       return y.info.avgRating - x.info.avgRating;
+//     } else {
+//       return x.info.sla.deliveryTime - y.info.sla.deliveryTime;
+//     }
+//   }
+//   // x.info.avgRating - y.info.avgRating
+// );
 
 // const Body = () => {
 //   return (
