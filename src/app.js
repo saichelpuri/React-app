@@ -4,6 +4,11 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 import resList from "./components/utils/mockdata";
 import "bootstrap/dist/css/bootstrap.min.css";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
+import RestuarentMenu from "./components/RestaurantMenu";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 // below code used to create react element using cdn links not a appropriate way
 // const parent = React.createElement("div", { id: "parent" }, [
@@ -128,11 +133,39 @@ const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
+      {/* <Body /> */}
+      <Outlet />
     </div>
   );
 };
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/restaurant/:resId",
+        element: <RestuarentMenu />,
+      },
+    ],
+    errorElement: <Error />,
+  },
+]);
 // this below code is for making a div as root div so everything is rendered inside that div
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(JSXheading); // for rendering react element using jsx
-root.render(<AppLayout />); // for rendering functional component
+// root.render(<AppLayout />); // for rendering functional component
+root.render(<RouterProvider router={appRouter} />);

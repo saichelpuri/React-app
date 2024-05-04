@@ -69,7 +69,8 @@ ul {
   font-style: italic;
   color: #ed1a36;
 }
-.filter {
+.filter,
+.search {
   display: flex;
   justify-content: center;
 }
