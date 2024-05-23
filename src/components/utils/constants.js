@@ -6,3 +6,6 @@ export const LOGO_URL =
 
 //   there are two ways to export one is export default CDN_URL
 //  another way is named export like putting export infront of const
+
+export const MENU_API =
+  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=";

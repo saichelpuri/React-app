@@ -3,6 +3,7 @@ import resList from "./utils/mockdata";
 import { useState, useEffect } from "react";
 import resList from "./utils/mockdata";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   // console.log("boday renderd"); when ever useState varable changes it will re render the body compoent
@@ -21,7 +22,8 @@ const Body = () => {
 
     const json = await data.json();
 
-    // console.log(json);
+    console.log(json);
+
     setlistOfRestaurants(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -32,6 +34,8 @@ const Body = () => {
     //   json.data.cards[1].card.card.gridElements?.infoWithStyle.restaurants
     // );
   };
+
+  // console.log(json);
 
   if (listOfRestaurants?.length === 0) {
     return <Shimmer />;
@@ -82,15 +86,20 @@ const Body = () => {
         {/* <RestuarentCard resData={resList[0]} /> */}
         {/* below each restaurant refers each element in the array inthat array each element is an object */}
         {filterdRestaurants.map((eachRestaurant, index) => (
-          <RestuarentCard
+          <Link
             key={eachRestaurant?.info?.id}
-            resData={eachRestaurant}
-            // when ever using map or looping always give a unique id like above code
-            // when a new restra come sit will renders all the restra if we dont use id's
-            // passing id when looping so the ract only renders that new restra only
-            //  key={index} and  this is one way of passing unq key
-            //  dont use index as keys beacuse the order of array values might change
-          />
+            to={"/restaurant/" + eachRestaurant?.info?.id}
+          >
+            {" "}
+            <RestuarentCard
+              resData={eachRestaurant}
+              // when ever using map or looping always give a unique id like above code
+              // when a new restra come sit will renders all the restra if we dont use id's
+              // passing id when looping so the ract only renders that new restra only
+              //  key={index} and  this is one way of passing unq key
+              //  dont use index as keys beacuse the order of array values might change
+            />
+          </Link>
         ))}
 
         {/* resName="Sai Foods" cusines="biryani, haleem"  to pass props manually  inside resturant card*/}

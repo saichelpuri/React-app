@@ -1,23 +1,37 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
+import { CDN_URL } from "./utils/constants";
+import { useParams } from "react-router-dom";
+import useRestaurantMenu from "./utils/useRestaurantMenu";
+
 const RestuarentMenu = () => {
+  const { resId } = useParams();
+  // console.log("resId", resId);
+
+  const resInfo = useRestaurantMenu(resId);
+
   useEffect(() => {
-    data();
+    fetchMenu();
   }, []);
-  const data = () => {
-    fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=17.450831&lng=78.378523&restaurantId="
-    );
-  };
-  const josn = data.josn();
-  console.log(json);
+
+  console.log("resInfo", resInfo);
+  if (resInfo === null) {
+    return <Shimmer />;
+  }
+  const { name, cloudinaryImageId } = resInfo?.cards?.[2]?.card?.card?.info;
+
+  const { cuisines } = resInfo?.cards[2]?.card?.card?.info;
+  console.log("items", cuisines);
+
   return (
     <div className="menu">
-      <h1>Name of the restaurant</h1>
+      <h1>{name}</h1>
+      <img src={CDN_URL + cloudinaryImageId} style={{ width: "100px" }} />
       <h2>menu</h2>
-      <ul>
-        <li>Biryani</li>
-        <li>Burgers</li>
-        <li>Cool Drinks</li>
+      <ul style={{ display: "flex", flexDirection: "column" }}>
+        {cuisines.map((item) => (
+          <li>{item}</li>
+        ))}
       </ul>
     </div>
   );
