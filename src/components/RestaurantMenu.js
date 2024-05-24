@@ -10,10 +10,6 @@ const RestuarentMenu = () => {
 
   const resInfo = useRestaurantMenu(resId);
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
   console.log("resInfo", resInfo);
   if (resInfo === null) {
     return <Shimmer />;
