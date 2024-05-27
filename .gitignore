@@ -1,0 +1,5 @@
+/node_modules
+/dist
+.parcel-cache
+styles-in-index.css-file.txt
+tailwind.config.js

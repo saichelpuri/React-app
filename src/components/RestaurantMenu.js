@@ -6,7 +6,6 @@ import useRestaurantMenu from "./utils/useRestaurantMenu";
 
 const RestuarentMenu = () => {
   const { resId } = useParams();
-  // console.log("resId", resId);
 
   const resInfo = useRestaurantMenu(resId);
 
@@ -17,7 +16,7 @@ const RestuarentMenu = () => {
   const { name, cloudinaryImageId } = resInfo?.cards?.[2]?.card?.card?.info;
 
   const { cuisines } = resInfo?.cards[2]?.card?.card?.info;
-  console.log("items", cuisines);
+  // console.log("items", cuisines);
 
   return (
     <div className="menu">

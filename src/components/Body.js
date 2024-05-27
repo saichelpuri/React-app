@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import resList from "./utils/mockdata";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "./utils/useOnlineStatus";
+import SudokuGame from "./SudokuGame";
 
 const Body = () => {
   // console.log("boday renderd"); when ever useState varable changes it will re render the body compoent
@@ -11,6 +13,7 @@ const Body = () => {
   const [listOfRestaurants, setlistOfRestaurants] = useState([]); //removed reslist inside useState so no longer use of reslist we can delete mockdata.js
   const [filterdRestaurants, setfilterdRestaurants] = useState([]);
   const [searchText, setsearchText] = useState("");
+  const onlineStatus = useOnlineStatus();
   useEffect(() => {
     fetchData();
   }, []);
@@ -22,7 +25,7 @@ const Body = () => {
 
     const json = await data.json();
 
-    console.log(json);
+    // console.log(json);
 
     setlistOfRestaurants(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -40,6 +43,9 @@ const Body = () => {
   if (listOfRestaurants?.length === 0) {
     return <Shimmer />;
   }
+
+  if (onlineStatus == false)
+    return <h1>hehe! you are offline pay the internet bill</h1>;
 
   return (
     <div className="body">

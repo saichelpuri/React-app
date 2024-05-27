@@ -18,3 +18,15 @@
 - helping in host in HTTPS
 - tree shaking algoritham -- remove unused code
 - different for dev and prod build -- prod build uses more optimaization
+
+# react Hooks
+
+- react hooks is a normal Js function
+- react has two imp hooks
+- useSate() -- used to create super powerful state variables in react
+- useEffect()
+
+# there are two types of routing in web apps
+
+- client side routing
+- server side routing
